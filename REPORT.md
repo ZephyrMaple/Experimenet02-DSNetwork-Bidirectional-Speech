@@ -21,9 +21,7 @@ C1 取 A=(0,1)、B=(1,5)：
 
 ![帧0输入与帧1输出在连接时隙的字节对比](results/switch_mapping.png)
 
-![16次传送校验的预期值与实际值](results/transfer_statistics.png)
-
-运行python -m src.run_experiment生成 results/transfer\_check.json、control\_tables.json 和 switch\_mapping.png。4帧×2对连接×2方向共16条记录，mismatches=0，available\_frame\_id 恒等于 input\_frame\_id+1；统计图中红叉全部落在柱顶，说明每个方向的实测字节与输入字节一致。
+运行python -m src.run_experiment生成 results/transfer\_check.json、control\_tables.json 和 switch\_mapping.png。4帧×2对连接×2方向共16条记录，mismatches=0，available\_frame\_id 恒等于 input\_frame\_id+1。
 
 control\_tables.json 记录连接前 t\_maps 为 \[{5:1,6:2},{1:5,2:6}]、s\_map 为 {(1,5):0,(1,6):0,(0,1):1,(0,2):1}，pairs 含 C1、C2。请求 (0,1) 与 (1,7) 时因端点占用返回 False，快照与拒绝前一致；释放 C1 后两端输出回 IDLE，C2 仍逐字节正确传送。
 
